@@ -10,8 +10,8 @@ projects:
     repoURL: https://github.com/DiegoFr75/kubernetes-config.git
     targetRevision: HEAD
     valuesFile: 
-      - values.yaml
+    - values.yaml
 
     applications:
-      - name: argocd
-        namespace: argocd
+    - name: argocd
+      namespace: argocd
