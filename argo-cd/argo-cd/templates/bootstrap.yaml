@@ -19,7 +19,17 @@ kind: Application
 metadata:
   name: argocd
 spec:
+  project: bootstrap-project
+  source:
+    repoURL: https://github.com/DiegoFr75/kubernetes-config.git
+    targetRevision: HEAD  
+    path: argo-cd/argo-cd
+    helm:
+      valuesFiles:
+      - values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: "argocd"
-  project: bootstrap-project
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
