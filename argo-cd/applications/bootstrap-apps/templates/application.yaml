@@ -1,17 +1,17 @@
-{{- $pathRoot := .Values.projects.bootstrap-apps.pathRoot -}}
-{{- $project := .Values.projects.bootstrap-apps.project -}}
-{{- $repoURL := .Values.projects.bootstrap-apps.repoURL -}}
-{{- $targetRevision := .Values.projects.bootstrap-apps.targetRevision -}}
-{{- $server := .Values.projects.bootstrap-apps.destination.server -}}
-{{- $valuesFiles := .Values.projects.bootstrap-apps.valuesFiles -}}
+{{- $pathRoot := .Values.projects.bootstrapApps.pathRoot -}}
+{{- $project := .Values.projects.bootstrapApps.project -}}
+{{- $repoURL := .Values.projects.bootstrapApps.repoURL -}}
+{{- $targetRevision := .Values.projects.bootstrapApps.targetRevision -}}
+{{- $valuesFiles := .Values.projects.bootstrapApps.valuesFiles -}}
 
-{{- range .Values.projects.boostrap-apps.applications }}
+{{- range .Values.projects.bootstrapApps.applications }}
+
 ---
 
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ .name }}
+  name: {{ $project }}-{{ .name }}
   namespace: ${{ .Values.default.manifest.namespace }}
 spec:
   project: {{ $project }}
@@ -26,4 +26,5 @@ spec:
     namespace: {{ .namespace }}
   syncPolicy:
     syncOptions:
-    - CreateNamespace=true
+      - CreateNamespace=true
+{{- end }}

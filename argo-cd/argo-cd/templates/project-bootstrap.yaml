@@ -19,6 +19,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: bootstrap-app
+  namespace: ${{ .Values.default.namespace }}
 spec:
   project: bootstrap-project
   source:
@@ -30,7 +31,7 @@ spec:
       - values.yaml
   destination:
     server: ${{ .Values.default.server }}
-    namespace: "${{ .Values.default.namespace }}"
+    namespace: ${{ .Values.default.namespace }}
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
