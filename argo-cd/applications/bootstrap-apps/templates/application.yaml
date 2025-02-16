@@ -1,0 +1,29 @@
+{{- $pathRoot := .Values.projects.bootstrap-apps.pathRoot -}}
+{{- $project := .Values.projects.bootstrap-apps.project -}}
+{{- $repoURL := .Values.projects.bootstrap-apps.repoURL -}}
+{{- $targetRevision := .Values.projects.bootstrap-apps.targetRevision -}}
+{{- $server := .Values.projects.bootstrap-apps.destination.server -}}
+{{- $valuesFiles := .Values.projects.bootstrap-apps.valuesFiles -}}
+
+{{- range .Values.projects.boostrap-apps.applications }}
+---
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .name }}
+  namespace: ${{ .Values.default.manifest.namespace }}
+spec:
+  project: {{ $project }}
+  source:
+    repoURL: {{ $repoURL }}
+    targetRevision: {{ $targetRevision }}  
+    path: {{ $pathRoot }}
+    helm:
+      valuesFiles: {{ $valuesFiles }}
+  destination:
+    server: ${{ .Values.default.manifest.server }}
+    namespace: {{ .namespace }}
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
