@@ -7,6 +7,7 @@ spec:
   - namespace: '*'
     server: kubernetes.default.svc
 
+---
 
 apiVersion: argoproj.io/v1alpha1
 kind: Application
