@@ -17,6 +17,6 @@ metadata:
   name: argocd
 spec:
   destination:
-    server: kubernetes.default.svc
+    server: https://kubernetes.default.svc
     namespace: "argocd"
   project: bootstrap-project
