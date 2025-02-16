@@ -1,6 +1,6 @@
 default:
   manifest:
-    namespace: default
+    namespace: argocd
     server: https://kubernetes.default.svc
 
 projects:
