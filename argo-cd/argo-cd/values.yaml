@@ -1,3 +1,5 @@
+default-namespace: argocd
+
 argo-cd:
   nameOverride: argocd
   fullnameOverride: "argocd"
