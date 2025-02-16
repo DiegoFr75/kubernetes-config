@@ -12,6 +12,6 @@ projects:
     valuesFile: 
       - values.yaml
 
-    application:
+    applications:
       - name: argocd
         namespace: argocd
