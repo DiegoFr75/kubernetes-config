@@ -74,7 +74,7 @@ argo-cd:
     enabled: false
     
   redis-ha:
-    enabled: true
+    enabled: false
 
   ## Server
   server:
