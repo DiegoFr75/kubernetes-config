@@ -30,7 +30,7 @@ spec:
       - values.yaml
   destination:
     server: ${{ .Values.default.server }}
-    namespace: "${{ .Values.default-namespace }}"
+    namespace: "${{ .Values.default.namespace }}"
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
