@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: ${{ include "bootstrap-project.name" . }}
-  namespace: ${{ .Values.default-namespace }}
+  name: bootstrap-project
+  namespace: ${{ .Values.default.namespace }}
 spec:
   sourceRepos:
   - '*'
   destinations:
   - namespace: '*'
-    server: ${{ include "default.server" . }}
+    server: ${{ .Values.default.server }}
   clusterResourceWhitelist:
   - group: '*'
     kind: '*'
@@ -20,16 +20,16 @@ kind: Application
 metadata:
   name: bootstrap-app
 spec:
-  project: ${{ include "bootstrap-project.name" . }}
+  project: bootstrap-project
   source:
-    repoURL: https://github.com/DiegoFr75/kubernetes-config.git
+    repoURL: ${{ .Values.default.repoURL }}
     targetRevision: HEAD  
     path: argo-cd/applications/bootstrap-apps
     helm:
       valuesFiles:
       - values.yaml
   destination:
-    server: {{ include "default.server" . }}
+    server: ${{ .Values.default.server }}
     namespace: "${{ .Values.default-namespace }}"
   syncPolicy:
     syncOptions:

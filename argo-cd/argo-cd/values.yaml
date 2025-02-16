@@ -1,4 +1,7 @@
-default-namespace: argocd
+default:
+  namespace: argocd
+  server: https://kubernetes.default.svc
+  repoURL: https://github.com/DiegoFr75/kubernetes-config.git
 
 argo-cd:
   nameOverride: argocd
