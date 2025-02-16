@@ -2,13 +2,13 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: bootstrap-project
-  namespace: ${{ .Values.default.namespace }}
+  namespace: {{ $.Values.default.namespace }}
 spec:
   sourceRepos:
   - '*'
   destinations:
   - namespace: '*'
-    server: ${{ .Values.default.server }}
+    server: {{ $.Values.default.server }}
   clusterResourceWhitelist:
   - group: '*'
     kind: '*'
@@ -19,19 +19,19 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: bootstrap-app
-  namespace: ${{ .Values.default.namespace }}
+  namespace: {{ $.Values.default.namespace }}
 spec:
   project: bootstrap-project
   source:
-    repoURL: ${{ .Values.default.repoURL }}
+    repoURL: {{ $.Values.default.repoURL }}
     targetRevision: HEAD  
     path: argo-cd/applications/bootstrap-apps
     helm:
       valuesFiles:
       - values.yaml
   destination:
-    server: ${{ .Values.default.server }}
-    namespace: ${{ .Values.default.namespace }}
+    server: {{ $.Values.default.server }}
+    namespace: {{ $.Values.default.namespace }}
   syncPolicy:
     syncOptions:
     - CreateNamespace=true

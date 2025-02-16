@@ -12,7 +12,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: {{ $project }}-{{ .name }}
-  namespace: ${{ .Values.default.manifest.namespace }}
+  namespace: {{ $.Values.default.manifest.namespace }}
 spec:
   project: {{ $project }}
   source:
@@ -22,7 +22,7 @@ spec:
     helm:
       valuesFiles: {{ $valuesFiles }}
   destination:
-    server: ${{ .Values.default.manifest.server }}
+    server: {{ $.Values.default.manifest.server }}
     namespace: {{ .namespace }}
   syncPolicy:
     syncOptions:
