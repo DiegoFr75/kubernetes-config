@@ -5,9 +5,7 @@
 {{- $valuesFiles := .Values.projects.bootstrapApps.valuesFiles -}}
 
 {{- range .Values.projects.bootstrapApps.applications }}
-
 ---
-
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
