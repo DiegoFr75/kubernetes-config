@@ -4,8 +4,8 @@ default:
     server: https://kubernetes.default.svc
 
 projects:
-  bootstrapApps:
-    project: bootstrap-project
+  argocd:
+    project: argocd
     pathRoot: argo-cd/argo-cd
     repoURL: https://github.com/DiegoFr75/kubernetes-config.git
     targetRevision: HEAD

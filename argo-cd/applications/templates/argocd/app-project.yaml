@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: argocd
+  namespace: {{ $.Values.default.namespace }}
+spec:
+  sourceRepos:
+  - '*'
+  destinations:
+  - namespace: '*'
+    server: {{ $.Values.default.server }}
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
