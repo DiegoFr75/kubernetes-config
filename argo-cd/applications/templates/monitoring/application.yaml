@@ -1,0 +1,28 @@
+{{- $pathRoot := .Values.projects.monitoring.pathRoot -}}
+{{- $project := .Values.projects.monitoring.project -}}
+{{- $repoURL := .Values.projects.monitoring.repoURL -}}
+{{- $targetRevision := .Values.projects.monitoring.targetRevision -}}
+{{- $valuesFiles := .Values.projects.monitoring.valuesFiles -}}
+
+{{- range .Values.projects.monitoring.applications }}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .name }}
+  namespace: {{ $.Values.default.manifest.namespace }}
+spec:
+  project: {{ $project }}
+  source:
+    repoURL: {{ $repoURL }}
+    targetRevision: {{ $targetRevision }}  
+    path: {{ printf "%s/%s/%s" $pathRoot .namespace .name }}
+    helm:
+      valuesFiles: {{ $valuesFiles }}
+  destination:
+    server: {{ $.Values.default.manifest.server }}
+    namespace: {{ .namespace }}
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+{{- end }}

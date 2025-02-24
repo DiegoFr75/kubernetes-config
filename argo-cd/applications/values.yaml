@@ -15,3 +15,15 @@ projects:
     applications:
     - name: argocd
       namespace: argocd
+
+  monitoring:
+    project: monitoring
+    pathRoot: monitoring
+    repoURL: https://github.com/DiegoFr75/kubernetes-config.git
+    targetRevision: HEAD
+    valuesFile: 
+    - values.yaml
+
+    applications:
+    - name: grafana
+      namespace: grafana

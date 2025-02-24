@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: monitoring
+  namespace: {{ $.Values.default.manifest.namespace }}
+spec:
+  sourceRepos:
+  - '*'
+  destinations:
+  - namespace: '*'
+    server: {{ $.Values.default.manifest.server }}
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
