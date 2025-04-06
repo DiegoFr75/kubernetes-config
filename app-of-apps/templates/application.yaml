@@ -1,10 +1,9 @@
-{{- $pathRoot := .Values.projects.monitoring.pathRoot -}}
-{{- $project := .Values.projects.monitoring.project -}}
-{{- $repoURL := .Values.projects.monitoring.repoURL -}}
-{{- $targetRevision := .Values.projects.monitoring.targetRevision -}}
-{{- $valuesFiles := .Values.projects.monitoring.valuesFiles -}}
+{{- $repoURL := .Values.default.manifest.repoURL -}}
+{{- $project := .Values.projectApps.monitoring.projectName -}}
+{{- $targetRevision := .Values.projectApps.monitoring.targetRevision -}}
+{{- $valuesFiles := .Values.projectApps.monitoring.valuesFiles -}}
 
-{{- range .Values.projects.monitoring.applications }}
+{{- range $.Values.projectApps.monitoring.applications }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -16,7 +15,7 @@ spec:
   source:
     repoURL: {{ $repoURL }}
     targetRevision: {{ $targetRevision }}  
-    path: {{ printf "%s/%s/%s" $pathRoot .namespace .name }}
+    path: {{ printf "%s/%s/%s/%s" "apps-charts" $project .namespace .name }}
     helm:
       valuesFiles: {{ $valuesFiles }}
   destination:

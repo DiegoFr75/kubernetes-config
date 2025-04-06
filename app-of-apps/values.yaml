@@ -1,0 +1,20 @@
+default:
+  manifest:
+    namespace: argocd
+    server: https://kubernetes.default.svc
+    repoURL: https://github.com/DiegoFr75/kubernetes-config.git
+
+projects:
+  - monitoring
+
+projectApps:
+  monitoring:
+    projectName: monitoring
+    targetRevision: HEAD
+    valuesFiles: 
+      - values.yaml
+
+    applications:
+      - name: grafana
+        namespace: grafana
+        valuesFile: null

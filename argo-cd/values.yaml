@@ -3,6 +3,14 @@ default:
   server: https://kubernetes.default.svc
   repoURL: https://github.com/DiegoFr75/kubernetes-config.git
 
+appOfApps:
+  projectName: app-of-apps
+  namespace: app-of-apps
+  targetRevision: HEAD
+  rootPath: app-of-apps
+  valuesFiles:
+    - values.yaml
+  
 argo-cd:
   nameOverride: argocd
   fullnameOverride: "argocd"

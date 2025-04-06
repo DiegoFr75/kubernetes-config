@@ -1,7 +1,9 @@
+{{- range $.Values.projects }}
+---
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: monitoring
+  name: {{ . }}
   namespace: {{ $.Values.default.manifest.namespace }}
 spec:
   sourceRepos:
@@ -12,3 +14,4 @@ spec:
   clusterResourceWhitelist:
   - group: '*'
     kind: '*'
+{{- end }}

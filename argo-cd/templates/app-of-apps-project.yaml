@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: {{ $.Values.appOfApps.projectName }}
+  namespace: {{ $.Values.default.namespace }}
+spec:
+  sourceRepos:
+  - {{ $.Values.default.repoURL }}
+  destinations:
+  - namespace: {{ $.Values.default.namespace }}
+    server: {{ $.Values.default.server }}
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'

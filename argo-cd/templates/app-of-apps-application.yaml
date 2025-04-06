@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ $.Values.appOfApps.projectName }}
+  namespace: {{ $.Values.default.namespace }}
+spec:
+  project: {{ $.Values.appOfApps.projectName }}
+  source:
+    repoURL: {{ $.Values.default.repoURL }}
+    targetRevision: {{ $.Values.appOfApps.targetRevision }}  
+    path: {{ $.Values.appOfApps.rootPath }}  
+    helm:
+      valuesFiles: {{ $.Values.appOfApps.valuesFiles }}  
+  destination:
+    server: {{ $.Values.default.server }}
+    namespace: {{ $.Values.appOfApps.namespace }}  
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
