@@ -17,7 +17,7 @@ spec:
     targetRevision: {{ $targetRevision }}  
     path: {{ printf "%s/%s/%s/%s" "apps-charts" $project .namespace .name }}
     helm:
-      valuesFiles: {{ $valuesFiles }}
+      valueFiles: {{ $valuesFiles }}
   destination:
     server: {{ $.Values.default.manifest.server }}
     namespace: {{ .namespace }}

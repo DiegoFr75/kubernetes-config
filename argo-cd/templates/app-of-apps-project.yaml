@@ -7,8 +7,8 @@ spec:
   sourceRepos:
   - {{ $.Values.default.repoURL }}
   destinations:
-  - namespace: {{ $.Values.appOfApps.namespace }}
-    server: {{ $.Values.default.server }}
+  - namespace: "*"
+    server: "*"
   clusterResourceWhitelist:
   - group: '*'
     kind: '*'
