@@ -17,4 +17,5 @@ projectApps:
     applications:
       - name: grafana
         namespace: grafana
-        valuesFile: null
+      - name: prometheus-stack
+        namespace: prometheus
