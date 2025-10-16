@@ -5,7 +5,7 @@ shared:
 
 appOfApps:
   appName: app-of-apps
-  rootPath: app-of-apps
+  rootPath: argocd/app-of-apps
   
 argo-cd:
   nameOverride: argocd

@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: {{ $.Values.shared.repoURL }}
     targetRevision: HEAD
-    path: argo-cd  
+    path: argocd/argocd  
     helm:
       valuesFiles: 
         - values.yaml 

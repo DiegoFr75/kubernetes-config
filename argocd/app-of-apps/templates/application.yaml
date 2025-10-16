@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: {{ $.Values.shared.repoURL }}
     targetRevision: HEAD  
-    path: {{ printf "%s/%s/%s" "apps-charts" .namespace .name }}
+    path: {{ printf "%s/%s/%s" "argocd/apps-charts" .namespace .name }}
   destination:
     server: {{ $.Values.shared.server }}
     namespace: {{ .namespace }}
