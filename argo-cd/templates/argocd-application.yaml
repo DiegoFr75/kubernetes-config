@@ -1,20 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ $.Values.appOfApps.appName }}
+  name: argocd
   namespace: {{ $.Values.shared.namespace }}
 spec:
   project: default
   source:
     repoURL: {{ $.Values.shared.repoURL }}
-    targetRevision: HEAD  
-    path: {{ $.Values.appOfApps.rootPath }}  
+    targetRevision: HEAD
+    path: argo-cd  
     helm:
       valuesFiles: 
         - values.yaml 
   destination:
     server: {{ $.Values.shared.server }}
-    namespace: {{ $.Values.shared.namespace }}  
+    namespace: {{ $.Values.shared.namespace }}
   syncPolicy:
     syncOptions:
       - CreateNamespace=true

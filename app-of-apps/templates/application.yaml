@@ -1,25 +1,18 @@
-{{- $repoURL := .Values.default.manifest.repoURL -}}
-{{- $project := .Values.projectApps.monitoring.projectName -}}
-{{- $targetRevision := .Values.projectApps.monitoring.targetRevision -}}
-{{- $valuesFiles := .Values.projectApps.monitoring.valuesFiles -}}
-
-{{- range $.Values.projectApps.monitoring.applications }}
+{{- range $.Values.applications }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: {{ .name }}
-  namespace: {{ $.Values.default.manifest.namespace }}
+  namespace: {{ $.Values.shared.namespace }}
 spec:
-  project: {{ $project }}
+  project: default
   source:
-    repoURL: {{ $repoURL }}
-    targetRevision: {{ $targetRevision }}  
-    path: {{ printf "%s/%s/%s/%s" "apps-charts" $project .namespace .name }}
-    helm:
-      valueFiles: {{ $valuesFiles }}
+    repoURL: {{ $.Values.shared.repoURL }}
+    targetRevision: HEAD  
+    path: {{ printf "%s/%s/%s" "apps-charts" .namespace .name }}
   destination:
-    server: {{ $.Values.default.manifest.server }}
+    server: {{ $.Values.shared.server }}
     namespace: {{ .namespace }}
   syncPolicy:
     syncOptions:
