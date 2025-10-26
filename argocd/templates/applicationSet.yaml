@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: application-set
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+    # matrix 'parent' generator
+    - matrix:
+        generators:
+          # git generator, 'child' #1
+          - git:
+              repoURL: {{ .Values.applicationSetConfig.repoURL }}
+              revision: HEAD
+              files:
+                - path: "apps/**/values.yaml"
+          # cluster generator, 'child' #2
+          - clusters:
+              selector:
+                matchLabels:
+                  '{{`{{ .path.basename }}`}}': 'true'
+  template:
+    metadata:
+      name: '{{`{{ .path.basename }}`}}'
+    spec:
+      project: default
+      source:
+        repoURL: {{ .Values.applicationSetConfig.repoURL }} 
+        targetRevision: HEAD
+        path: '{{`{{ .path }}`}}' 
+      destination:
+        server: '{{ .server }}'
+        namespace: '{{`{{ index .path.segments 1 }}`}}' 

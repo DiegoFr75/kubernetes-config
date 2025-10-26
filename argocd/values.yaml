@@ -1,5 +1,4 @@
-shared:
-  namespace: argocd
+applicationSetConfig:
   server: https://kubernetes.default.svc
   repoURL: https://github.com/DiegoFr75/kubernetes-config.git
 
