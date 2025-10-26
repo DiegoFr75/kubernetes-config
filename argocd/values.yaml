@@ -1,11 +1,8 @@
 applicationSetConfig:
   server: https://kubernetes.default.svc
   repoURL: https://github.com/DiegoFr75/kubernetes-config.git
+  namespace: argocd
 
-appOfApps:
-  appName: app-of-apps
-  rootPath: argocd/app-of-apps
-  
 argo-cd:
   nameOverride: argocd
   fullnameOverride: "argocd"
