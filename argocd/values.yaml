@@ -71,14 +71,14 @@ argo-cd:
       
     # Argo CD server ingress configuration
     ingress:
-      enabled: false
+      enabled: true
       # -- Defines which ingress controller will implement the resource
-      ingressClassName: ""
+      ingressClassName: "nginx"
       # -- Argo CD server hostname
       # @default -- `""` (defaults to global.domain)
-      hostname: ""
+      # hostname: ""
       # -- The path to Argo CD server
-      path: /
+      path: /argocd
       # -- Ingress path type. One of `Exact`, `Prefix` or `ImplementationSpecific`
       pathType: Prefix
       # -- Enable TLS configuration for the hostname defined at `server.ingress.hostname`
