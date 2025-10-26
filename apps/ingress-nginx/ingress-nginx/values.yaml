@@ -2,6 +2,10 @@ ingress-nginx:
   controller:
     nodeSelector:
       node-type: control-plane
+
+    tolerations:
+      - key: node-role.kubernetes.io/control-plane
+        effect: NoSchedule
     
     ingressClassResource:
       enabled: true
