@@ -1,0 +1,33 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: homelab
+nodes:
+  - role: control-plane
+    labels:
+      node-type: control-plane
+    extraPortMappings:
+      - containerPort: 80
+        hostPort: 80
+        protocol: TCP
+      - containerPort: 443
+        hostPort: 443
+        protocol: TCP
+  - role: worker
+    labels:
+      node-type: worker
+      name: worker-01
+    extraMounts:
+      - hostPath: /home/diego/media/
+        containerPath: /storage/media/
+      - hostPath: /home/diego/homelab-k8s-pvs/
+        containerPath: /storage/pvs
+  - role: worker
+    labels:
+      node-type: worker
+      name: worker-02
+    extraMounts:
+      - hostPath: /home/diego/media/
+        containerPath: /storage/media/
+      - hostPath: /home/diego/homelab-k8s-pvs/
+        containerPath: /storage/pvs
+
