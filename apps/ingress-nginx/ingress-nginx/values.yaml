@@ -1,0 +1,8 @@
+ingress-nginx:
+  controller:
+    nodeSelector:
+      node-type: control-plane
+    
+    ingressClassResource:
+      enabled: true
+      name: nginx
