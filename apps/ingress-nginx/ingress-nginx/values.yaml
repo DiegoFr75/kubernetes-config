@@ -13,3 +13,8 @@ ingress-nginx:
 
     service:
       type: LoadBalancer
+
+    hostPort:
+      enabled: true
+      http: 80
+      https: 443
