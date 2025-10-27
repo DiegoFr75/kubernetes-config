@@ -12,4 +12,4 @@ ingress-nginx:
       name: nginx
 
     service:
-      type: NodePort
+      type: LoadBalancer
