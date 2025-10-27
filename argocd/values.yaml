@@ -76,9 +76,10 @@ argo-cd:
       ingressClassName: "nginx"
       # -- Argo CD server hostname
       # @default -- `""` (defaults to global.domain)
-      # hostname: ""
+      hostname: "argo.homelab.com"
+      #
       # -- The path to Argo CD server
-      path: /argocd
+      path: /
       # -- Ingress path type. One of `Exact`, `Prefix` or `ImplementationSpecific`
       pathType: Prefix
       # -- Enable TLS configuration for the hostname defined at `server.ingress.hostname`
