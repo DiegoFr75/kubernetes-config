@@ -36,7 +36,7 @@ ingress:
     - host: homelab.com
       paths:
         - path: /jelly
-          pathType: prefix
+          pathType: Prefix
   tls: []
 
 resources: {}
