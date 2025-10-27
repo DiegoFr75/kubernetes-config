@@ -10,3 +10,6 @@ ingress-nginx:
     ingressClassResource:
       enabled: true
       name: nginx
+
+    service:
+      type: NodePort

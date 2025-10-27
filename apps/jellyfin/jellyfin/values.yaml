@@ -24,19 +24,19 @@ securityContext: {}
 
 # This is for setting up a service more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/
 service:
-  type: NodePort
+  type: ClusterIp
   port: 8096
 
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
-  enabled: false
-  className: ""
+  enabled: true
+  className: "nginx"
   annotations: {}
   hosts:
-    - host: chart-example.local
+    - host: homelab.com
       paths:
-        - path: /
-          pathType: ImplementationSpecific
+        - path: /jelly
+          pathType: prefix
   tls: []
 
 resources: {}
