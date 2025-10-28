@@ -1,5 +1,5 @@
 ingress-nginx:
-  controller:
+  controller: 
     nodeSelector:
       node-type: control-plane
 
@@ -12,9 +12,13 @@ ingress-nginx:
       name: nginx
 
     service:
-      type: LoadBalancer
+      type: ClusterIP
 
     hostPort:
       enabled: true
       http: 80
       https: 443
+    
+    watchIngressWithoutClass: true
+    extraArgs:
+      - publish-status-address=localhost
