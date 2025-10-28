@@ -21,4 +21,4 @@ ingress-nginx:
     
     watchIngressWithoutClass: true
     extraArgs:
-      - --publish-status-address=localhost
+      - publish-status-address=localhost
