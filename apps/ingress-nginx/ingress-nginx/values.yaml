@@ -20,5 +20,9 @@ ingress-nginx:
       https: 443
     
     watchIngressWithoutClass: true
+    
+    publishService:
+      enabled: false
+    
     extraArgs:
       publish-status-address: localhost
