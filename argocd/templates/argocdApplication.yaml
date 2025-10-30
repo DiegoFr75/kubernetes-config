@@ -8,9 +8,6 @@ spec:
     repoURL: {{ $.Values.applicationSetConfig.repoURL }}
     targetRevision: HEAD
     path: argocd  
-    helm:
-      valuesFiles: 
-        - values.yaml 
   destination:
     server: {{ $.Values.applicationSetConfig.server }}
     namespace: {{ $.Values.applicationSetConfig.namespace }}
