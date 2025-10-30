@@ -11,6 +11,10 @@ argo-cd:
     logging:
       format: json
       level: info
+  configs:
+    params:
+      server.insecure: true
+
 
   controller:
     name: application-controller
@@ -68,10 +72,6 @@ argo-cd:
     ## Server service configuration
     service:
       type: ClusterIP
-    
-    configs:
-      params:
-        server.insecure: true
 
     # Argo CD server ingress configuration
     ingress:
