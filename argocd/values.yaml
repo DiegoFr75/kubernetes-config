@@ -68,23 +68,21 @@ argo-cd:
     ## Server service configuration
     service:
       type: ClusterIP
-      
+    
+    configs:
+      params:
+        server.insecure: true
+
     # Argo CD server ingress configuration
     ingress:
       enabled: true
-      # -- Defines which ingress controller will implement the resource
       ingressClassName: "nginx"
-      # -- Argo CD server hostname
-      # @default -- `""` (defaults to global.domain)
+      annotations:
+        nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+        nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
       hostname: "argo.homelab.com"
-      #
-      # -- The path to Argo CD server
       path: /
-      # -- Ingress path type. One of `Exact`, `Prefix` or `ImplementationSpecific`
       pathType: Prefix
-      # -- Enable TLS configuration for the hostname defined at `server.ingress.hostname`
-      ## TLS certificate will be retrieved from a TLS secret `argocd-server-tls`
-      ## You can create this secret via `certificate` or `certificateSecret` option
       tls: false
 
     ingressGrpc:
