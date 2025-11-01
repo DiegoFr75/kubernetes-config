@@ -33,7 +33,7 @@ ingress:
   className: "nginx"
   annotations: {}
   hosts:
-    - host: jelly.homelab.com
+    - host: jelly.homelab.buzz
       paths:
         - path: /
           pathType: Prefix

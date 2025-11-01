@@ -83,7 +83,7 @@ argo-cd:
       annotations:
         nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
         nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
-      hostname: "argo.homelab.com"
+      hostname: "argo.homelab.buzz"
       path: /
       pathType: Prefix
       tls: false
