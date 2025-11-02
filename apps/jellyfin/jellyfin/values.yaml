@@ -3,7 +3,7 @@ replicaCount: 1
 image:
   repository: ghcr.io/jellyfin/jellyfin
   pullPolicy: IfNotPresent
-  tag: "2025102005"
+  tag: "10.11.1"
 
 imagePullSecrets: []
 nameOverride: ""
